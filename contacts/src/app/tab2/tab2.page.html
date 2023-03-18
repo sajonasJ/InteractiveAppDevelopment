@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
     <ion-title> Welcome </ion-title>
   </ion-toolbar>
@@ -21,14 +21,14 @@
     <ion-item><ion-input type="text" placeholder="Username"></ion-input></ion-item>
     <ion-item><ion-input type="Password" placeholder="Password"></ion-input></ion-item>
     <ion-item>
-      <ion-checkbox slot="start"></ion-checkbox>
-      <ion-label>Remain Logged in</ion-label>
+      <!-- <ion-checkbox slot="start"></ion-checkbox> -->
+      <ion-label><ion-checkbox slot="start"></ion-checkbox>Remain Logged in</ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-button shape="round" color ="success"
-    >Login <ion-icon name="log-in-outline"></ion-icon
-  ></ion-button>
+  <ion-button shape="round" color ="success" routerLink="/account"
+    >Login <ion-icon name="log-in-outline"></ion-icon>
+  </ion-button>
 
   <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
 </ion-content>
