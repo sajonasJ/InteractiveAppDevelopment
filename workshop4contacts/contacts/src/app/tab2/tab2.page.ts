@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  timesClicked: number = 0;
+  id="";
+  constructor(private router:Router) { }
 
-  constructor() {}
+  incrementCounter() {
+    this.timesClicked = this.timesClicked + 1;
+  }
+
+  login() {
+    this.router.navigateByUrl("/account");
+    this.incrementCounter();
+  }
 
 }

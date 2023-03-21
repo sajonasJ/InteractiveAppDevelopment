@@ -18,17 +18,27 @@
   </ion-text>
 
   <ion-list>
-    <ion-item><ion-input type="text" placeholder="Username"></ion-input></ion-item>
-    <ion-item><ion-input type="Password" placeholder="Password"></ion-input></ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="id" name="id" placeholder="Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="Password" placeholder="Password"></ion-input>
+    </ion-item>
     <ion-item>
       <!-- <ion-checkbox slot="start"></ion-checkbox> -->
-      <ion-label><ion-checkbox slot="start"></ion-checkbox>Remain Logged in</ion-label>
+      <ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>Remain Logged in
+      </ion-label>
     </ion-item>
   </ion-list>
 
-  <ion-button shape="round" color ="success" size="large" routerLink="/account"
+  <ion-button (click)="login()" shape="round" color="success" *ngIf="id != ''" size="large"
     >Login <ion-icon name="log-in-outline"></ion-icon>
   </ion-button>
+
+  <ion-list>
+    <ion-text> {{timesClicked}} Login Attempts</ion-text>
+  </ion-list>
 
   <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
 </ion-content>
