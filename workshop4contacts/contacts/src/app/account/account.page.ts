@@ -7,17 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
- 
+ public id:string="";
 
-  constructor(private route: ActivatedRoute,private router:Router,) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router:Router,
+    )
+     { }
 
   ngOnInit() {
-    // this.id = this.route.snapshot.paramMap.get('id');
-    this.router.navigateByUrl('/tab2/:id');
+    this.id = this.route.snapshot.paramMap.get('id')!;
   }
 
-  loadAccountName(){
-
-  }
+ 
 
 }

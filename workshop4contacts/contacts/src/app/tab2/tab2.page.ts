@@ -9,16 +9,19 @@ import { Router } from '@angular/router';
 })
 export class Tab2Page {
   timesClicked: number = 0;
-  id="";
-  constructor(private router:Router) { }
+  placeholder: string = "Username";
+  id = "";
+  constructor(private router: Router) { }
 
   incrementCounter() {
     this.timesClicked = this.timesClicked + 1;
   }
 
   login() {
-    this.router.navigateByUrl("/account");
+    this.router.navigateByUrl("/account/" + this.id);
     this.incrementCounter();
+    this.id = "";
+
   }
 
 }

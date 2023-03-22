@@ -11,10 +11,10 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
   },
-  // {
-  //   path: 'tab2/:id',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // }
+  {
+    path: 'account/:id',
+    loadChildren: () => import('./account/account.module').then(m => m.AccountPageModule)
+  }
 ];
 @NgModule({
   imports: [
