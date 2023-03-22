@@ -23,5 +23,4 @@ export class Tab2Page {
     this.id = "";
 
   }
-
 }
