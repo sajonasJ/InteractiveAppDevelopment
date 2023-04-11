@@ -23,14 +23,14 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tasks/tasks',
+        redirectTo: '/tabs/tasks',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tasks/tasks',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
 ];
