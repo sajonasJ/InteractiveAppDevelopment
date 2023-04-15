@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
-
+import { ModalPage } from '../modal/modal.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -9,26 +9,37 @@ import { Component } from '@angular/core';
 })
 
 export class Tab1Page {
+  contacts = [{
+    fName: "Johan",
+    lName: "Poopy",
+    eMail: "atHotMail.com"
+  }, {
+    fName: "Sheldon",
+    lName: "Cooper",
+    eMail: "atHotMail.com"
+  }];
 
-  
+  constructor(private modalController: ModalController) { }
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalPage
+    });
 
-  contacts = ["jack", "john", "james"];
-  constructor() { }
-
-  addContact() {
-    let name: string | null = prompt("Enter contact name");
-    if (name) {
-      this.contacts.push(name);
-    }
+    modal.onDidDismiss().then((retval) => {
+      if (retval.role === 'done' && retval.data) {
+        // Add the new contact to the contacts array
+        const newContact = {
+          fName: retval.data.fName,
+          lName: retval.data.lName,
+          eMail: retval.data.eMail
+        };
+        this.contacts.push(newContact);
+      }
+    });
+    return modal.present();
   }
-  editContact(index:number) {
-    let name: string|null= prompt("Contact name", this.contacts[index]);
-    this.contacts[index] = name!;
+  deleteContact(index: number) {
+    if (confirm("Delete "+ this.contacts[index] + "?"))
+      this.contacts.splice(index, 1);
   }
-  deleteContact(index:number){
-    let name: string|null= prompt("Contact name", this.contacts[index]);
-if (confirm("Delete"+this.contacts[index]+"?"))
-    this.contacts.splice(index,1);
-  }
-
 }

@@ -3,7 +3,7 @@
     <ion-title mode="ios">
       List of Contacts
     </ion-title>
-    <ion-button fill="clear" size="large" (click)="addContact()">
+    <ion-button fill="clear" size="large" (click)="presentModal()">
       <ion-icon name="add-outline"></ion-icon></ion-button>
   </ion-toolbar>
 
@@ -13,12 +13,10 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let contact of contacts;index as i">
-      <ion-item>
-        {{contact}}
-      </ion-item>
+      <ion-item><ion-label> {{ contact.fName }} {{ contact.lName }}<p>{{ contact.eMail }}</p></ion-label></ion-item>
       <ion-item-options side="end">
         <ion-item-option color="success">
-          <ion-icon slot="icon-only" name="create-outline" (click)="editContact(i)"></ion-icon>
+          <ion-icon slot="icon-only" name="create-outline" (click)=" presentModal()"></ion-icon>
         </ion-item-option>
         <ion-item-option color="danger">
           <ion-icon slot="icon-only" name="trash-outline" (click)="deleteContact(i)"></ion-icon>
@@ -26,4 +24,5 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+
 </ion-content>
