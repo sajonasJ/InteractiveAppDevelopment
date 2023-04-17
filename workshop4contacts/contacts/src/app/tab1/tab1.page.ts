@@ -24,10 +24,9 @@ export class Tab1Page {
   async presentModal() {
     const modal = await this.modalController.create({
       component: ModalPage,
-      componentProps:{
-        btn:'add'
-      }
-
+          componentProps:{
+            btn:'add'
+          }
     });
 
     // Event listener for when the modal is dismissed
@@ -70,6 +69,9 @@ export class Tab1Page {
           lName: retval.data.lName,
           eMail: retval.data.eMail
         };
+
+        const index = this.contacts.findIndex(c => c === contact);
+        this.contacts[index] = editedContact;
       }
     });
 
