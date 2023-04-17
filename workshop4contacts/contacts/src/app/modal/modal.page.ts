@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
+  btn:string="";
   fName: string;
   lName: string;
   eMail: string;
@@ -27,6 +28,7 @@ export class ModalPage implements OnInit {
         this.fName = contactData.fName;
         this.lName = contactData.lName;
         this.eMail = contactData.eMail;
+        this.btn = contactData;
       }
     });
   }

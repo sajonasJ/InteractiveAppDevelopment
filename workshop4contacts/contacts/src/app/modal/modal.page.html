@@ -17,5 +17,6 @@
     </ion-item>
 
   </ion-list>
-  <ion-button expand="full" (click)="closemodal()">Add</ion-button>
+  <ion-button *ngIf="btn == 'add'" expand="full" (click)="closemodal()">Add</ion-button>
+  <ion-button *ngIf="btn == 'edit'" expand="full" (click)="closemodal()">Edit</ion-button>
 </ion-content>
