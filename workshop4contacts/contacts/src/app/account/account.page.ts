@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+// import { Router } from '@angular/router';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -8,14 +9,22 @@ import { Router } from '@angular/router';
 })
 export class AccountPage implements OnInit {
   public id: string | null = "";
-
+  routeParamSubscription: Subscription = new Subscription;
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+
   ) { }
 
+
+
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.routeParamSubscription = this.route.params.subscribe(params => {
+      this.id = params['id']
+    })
+  }
+
+  ngOndestroy() {
+    this.routeParamSubscription.unsubscribe();
   }
 
 
