@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title mode="ios">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Welcome</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-img src=" https://i.imgur.com/ttPSFva.png" alt="Walking"></ion-img>
+
+  <ion-text>
+    <ion-item>
+      <h1>Login to your Account</h1>
+    </ion-item>
+  </ion-text>
+
+  <ion-item>
+    <ion-label>Email:</ion-label>
+    <ion-input type="text" name="email" placeholder="youremail@address.com"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Password:</ion-label>
+    <ion-input type="Password" placeholder="Password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-checkbox justify="start" labelPlacement="end">Remember me</ion-checkbox>
+  </ion-item>
+
+  <ion-button expand="block">Login</ion-button>
+  <ion-button expand="block">Forgot your Password?</ion-button>
+
+</ion-content>

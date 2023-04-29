@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title mode="ios">
+      Settings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-item>
+    <ion-toggle justify="space-between">
+      <h2>Dark Mode</h2>
+    </ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-select justify="space-between" label="Goals" placeholder="STEPS">
+      <ion-select-option value="1">2,500 steps</ion-select-option>
+      <ion-select-option value="2">5,000 steps</ion-select-option>
+      <ion-select-option value="3">7,500 steps</ion-select-option>
+      <ion-select-option value="3">10,000 steps</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-buttons>
+      <ion-button>
+        <h2>Account</h2>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-item>
+    <ion-buttons>
+      <ion-button>
+        <h2>FAQ</h2>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-item>
+    <ion-buttons>
+      <ion-button>
+        <h2>Terms and Conditions</h2>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+</ion-content>

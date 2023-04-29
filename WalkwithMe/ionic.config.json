@@ -1,0 +1,7 @@
+{
+  "name": "WalkwithMe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
