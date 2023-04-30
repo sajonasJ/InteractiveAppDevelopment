@@ -1,5 +1,7 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar ><ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
     <ion-title mode="ios">Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -32,8 +34,11 @@
   <ion-item>
     <ion-checkbox justify="start" labelPlacement="end">Remember me</ion-checkbox>
   </ion-item>
-
-  <ion-button expand="block">Login</ion-button>
-  <ion-button expand="block">Forgot your Password?</ion-button>
+<br>
+<br>
+<br>
+<br>
+  <ion-button expand="block" routerLink="/tabs/">Login</ion-button>
+  <ion-button expand="block" >Create Account</ion-button>
 
 </ion-content>

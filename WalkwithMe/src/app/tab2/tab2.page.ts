@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  darkMode = false;
+  constructor(private router: Router) {}
 
-  constructor() {}
-
+  getFaq() {
+    this.router.navigateByUrl("/faq/");
+  }
 }

@@ -1,68 +1,108 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>FAQ</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title mode="ios">Frequently Asked Questions</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">FAQ</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-list><ion-item>
-    <ion-text class="ion-margin-center">FREQUENTLY ASKED QUESTIONS (FAQ)
-
-      What is this app for?
-
-      This app is designed to help you track your daily steps, distance walked, and the temperature during your walks,
+<ion-content>
+  <!-- card1 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>What is this app for?</ion-card-title>
+      <ion-card-subtitle>Purpose</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      This app is designed to help you track your daily steps, distance walked, during your walks,
       runs, or other physical activities.
-      <br>
-      <br>
-      How does the app work?
+    </ion-card-content>
+  </ion-card>
 
+  <!-- card2 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title> How does the app work?</ion-card-title>
+      <ion-card-subtitle> How it works</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
       The app uses your smartphone's built-in sensors to track your movements and calculate the distance you've walked
       or run. It also uses weather data to record the temperature during your activities.
-      <br>   
-      <br>
-      Do I need to create an account to use the app?
+    </ion-card-content>
+  </ion-card>
 
-      No, you don't need to create an account to use the app. However, creating an account allows you to store and view
+  <!-- card3 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title> Do I need to create an account to use the app?</ion-card-title>
+      <ion-card-subtitle> Account Creation</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Yes, you need to create an account to use the app. Creating an account allows you to store and view
       your activity history and set personalized goals.
-      <br>   
-      <br>
-      Is my data secure?
+    </ion-card-content>
+  </ion-card>
 
+  <!-- card4 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Is my data secure?</ion-card-title>
+      <ion-card-subtitle> Security</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
       Yes, we take the security and privacy of your data very seriously. We use industry-standard encryption and secure
       servers to protect your data.
-      <br>   
-      <br>
+    </ion-card-content>
+  </ion-card>
 
-      Can I use the app offline?
-
+  <!-- card5 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Can I use the app offline?</ion-card-title>
+      <ion-card-subtitle> Offline Mode</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
       Yes, you can use the app offline. However, you won't be able to access some features, such as syncing your data to
       the cloud or getting weather updates.
-      <br>   
-      <br>
-      Can I use the app to track other physical activities, such as cycling or swimming?
+    </ion-card-content>
+  </ion-card>
 
+  <!-- card7 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Can I use the app to track other physical activities, such as cycling or
+        swimming?</ion-card-title>
+      <ion-card-subtitle> Other Uses</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
       Currently, the app is designed to track only steps and distance walked or run. However, we're constantly working
       to improve the app and add new features, so stay tuned for updates.
-      <br>   
-      <br>
-      Can I share my activity data with others?
+    </ion-card-content>
+  </ion-card>
 
+  <!-- card8 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Can I share my activity data with others?</ion-card-title>
+      <ion-card-subtitle> Activity Sharing</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
       Yes, you can share your activity data with friends and family through social media or messaging apps. You can also
       connect with other users through the app's community feature.
-      <br>   
-      <br>
-      Is the app available in other languages?
+    </ion-card-content>
+  </ion-card>
 
+  <!-- card1 -->
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Can I use the app offline?</ion-card-title>
+      <ion-card-subtitle>Is the app available in other languages?</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
       Currently, the app is available only in English. However, we're working on adding support for other languages in
       the future.
-
-      If you have any other questions or concerns, please contact us at [insert contact information].</ion-text></ion-item>
-      <ion-item><ion-text></ion-text></ion-item>
-  </ion-list>
-
+      If you have any other questions or concerns, please contact us at WalkwithMe@fakemail.com.
+    </ion-card-content>
+  </ion-card>
 </ion-content>
