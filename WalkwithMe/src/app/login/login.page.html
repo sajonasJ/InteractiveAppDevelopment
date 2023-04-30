@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar ><ion-buttons slot="start">
-    <ion-back-button></ion-back-button>
-  </ion-buttons>
+  <ion-toolbar><ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title mode="ios">Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -34,11 +34,11 @@
   <ion-item>
     <ion-checkbox justify="start" labelPlacement="end">Remember me</ion-checkbox>
   </ion-item>
-<br>
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
+  <br>
   <ion-button expand="block" routerLink="/tabs">Login</ion-button>
-  <ion-button expand="block" >Create Account</ion-button>
+  <ion-button expand="block" (click)="presentModal()">Create Account</ion-button>
 
 </ion-content>

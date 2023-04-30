@@ -15,12 +15,14 @@
   <ion-list>
     <!-- FIRST NAME -->
     <ion-item>
-      <ion-input label="First Name:" labelPlacement="stacked" placeholder="John / Jane"></ion-input>
+      <ion-input label="First Name:" labelPlacement="stacked" placeholder="John / Jane" type="text" [(ngModel)]="fName"
+        clearInput></ion-input>
     </ion-item>
 
     <!-- LAST NAME -->
     <ion-item>
-      <ion-input label="Last Name:" labelPlacement="stacked" placeholder="Doe"></ion-input>
+      <ion-input label="Last Name:" labelPlacement="stacked" placeholder="Doe" type="text" [(ngModel)]="lName"
+        clearInput></ion-input>
     </ion-item>
 
     <!-- DATE -->
@@ -36,12 +38,13 @@
 
     <!-- Email -->
     <ion-item>
-      <ion-input label="Email:" labelPlacement="stacked" placeholder="youremail@address.com"></ion-input>
+      <ion-input label="Email:" labelPlacement="stacked" placeholder="youremail@address.com" type="text"
+        [(ngModel)]="eMail" clearInput></ion-input>
     </ion-item>
 
     <!-- PASSWORD -->
     <ion-item>
-      <ion-input type="Password" label="Password:" labelPlacement="stacked" placeholder="Password"></ion-input>
+      <ion-input type="Password" [(ngModel)]="birthDay" label="Password:" labelPlacement="stacked" placeholder="Password" clearInput></ion-input>
     </ion-item>
 
     <!-- RETYPE PASSWORD -->
@@ -55,7 +58,7 @@
   <br>
 
   <!-- CREATE ACCOUNT -->
-  <ion-button expand="block" routerLink="/tabs">Create Account</ion-button>
+  <ion-button expand="block" (click)="closemodal()">Create Account</ion-button>
   <ion-text>
     <p>Already have an Account?</p>
   </ion-text>
