@@ -1,24 +1,23 @@
-ion-img{
+ion-img {
     height: 34vh;
     width: auto;
-    object-fit:cover;
+    object-fit: cover;
 }
-
 
 ion-checkbox {
     --size: 24px;
     --checkbox-background-checked: #ffb43a;
-  }
+}
 
 ion-checkbox::part(container) {
     border-radius: 6px;
     border: 1px solid #000000;
-    --checkmark-color:black;
-    --transition:2s ease;
+    --checkmark-color: black;
+    --transition: 2s ease;
 }
 
 ion-button {
     --background-activated: #ffffff;
     --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-    --color-activated:black;
+    --color-activated: black;
 }

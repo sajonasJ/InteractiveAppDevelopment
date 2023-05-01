@@ -11,24 +11,21 @@ export class LoginPage {
     fName: "Johan",
     lName: "Poopy",
     eMail: "youremail@fakemail.com",
-    birthDay:"1-Jan-2077"
+    birthDay: "1-Jan-2077"
   }];
 
   constructor(private modalController: ModalController) { }
 
-  // Method to present a modal for adding a new contact
   async presentModal() {
+    // func to present a modal for adding a new contact
     const modal = await this.modalController.create({
       component: CreatePage,
-          componentProps:{
-          }
     });
 
-    // Event listener for when the modal is dismissed
     modal.onDidDismiss().then((retval) => {
       // Check if modal was dismissed with 'done' role and has data
       if (retval.role === 'done' && retval.data) {
-        // Extract contact data from modal and add to contacts array
+        // Extract contact data from modal and add to contacts object array
         const newContact = {
           fName: retval.data.fName,
           lName: retval.data.lName,
@@ -38,12 +35,11 @@ export class LoginPage {
         this.contacts.push(newContact);
       }
     });
-
-    return modal.present(); // Display the modal
+    return modal.present();
   }
 
-  // Method to present a modal for editing an existing contact
   async editModal(index: number) {
+    // Method to present a modal for editing an existing contact
     const contact = this.contacts[index];
     const modal = await this.modalController.create({
       component: CreatePage,
@@ -51,11 +47,10 @@ export class LoginPage {
         fName: contact.fName,
         lName: contact.lName,
         eMail: contact.eMail,
-        birthDay:contact.birthDay,
+        birthDay: contact.birthDay,
       }
     });
 
-    // Event listener for when the modal is dismissed
     modal.onDidDismiss().then((retval) => {
       // Check if modal was dismissed with 'done' role and has data
       if (retval.role === 'done' && retval.data) {
@@ -68,10 +63,10 @@ export class LoginPage {
         };
 
         const index = this.contacts.findIndex(c => c === contact);
+        // Set index of data to edited index
         this.contacts[index] = editedContact;
       }
     });
-
-    return modal.present(); // Display the modal
+    return modal.present();
   }
 }

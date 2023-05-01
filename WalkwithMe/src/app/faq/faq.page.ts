@@ -12,7 +12,6 @@ public id: string | null =" ";
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
   }
 
 }

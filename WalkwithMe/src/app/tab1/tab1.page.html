@@ -6,31 +6,36 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Steps</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <!-- CHART PLACE HOLDER -->
   <ion-img src="https://i.imgur.com/vvbeDm9.jpg" alt="Weekly Steps"></ion-img>
   <br>
-<!-- GOAL -->
-<ion-item>
-  <ion-label>
-    <h1>Goal</h1>
-  </ion-label>
-  <ion-text>10,000 Steps</ion-text>
-</ion-item>
-<br>
-<!-- DAILY STEPS -->
+
+  <!-- GOAL -->
+  <ion-item>
+    <ion-label>
+      <h1>Step Goals</h1>
+    </ion-label>
+    <ion-text>10,000 Steps</ion-text>
+  </ion-item>
+  <br>
+
+  <!-- DAILY STEPS -->
   <ion-item>
     <ion-label>
       <h1>Daily Steps</h1>
     </ion-label>
     <ion-text>4,000 Steps</ion-text>
   </ion-item>
-<!-- WEEKLY STEPS -->
-<br>
+
+  <!-- WEEKLY STEPS -->
+  <br>
   <ion-item>
     <ion-label>
       <h1>Weekly Steps</h1>
@@ -38,4 +43,12 @@
     <ion-text>8,001 Steps</ion-text>
   </ion-item>
 
+  <!-- AVERAGE STEPS -->
+  <br>
+  <ion-item>
+    <ion-label>
+      <h1>Average Steps</h1>
+    </ion-label>
+    <ion-text>8,001 Steps</ion-text>
+  </ion-item>
 </ion-content>

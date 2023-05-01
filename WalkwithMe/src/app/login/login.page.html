@@ -13,7 +13,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-img src=" https://i.imgur.com/ttPSFva.png" alt="Walking"></ion-img>
+  <!-- IMG -->
+  <ion-img src="https://i.imgur.com/m4BcCIt.png" alt="Walking"></ion-img>
 
   <ion-text>
     <ion-item>
@@ -21,16 +22,19 @@
     </ion-item>
   </ion-text>
 
+  <!-- EMAIL -->
   <ion-item>
     <ion-label>Email:</ion-label>
     <ion-input type="text" name="email" placeholder="youremail@address.com"></ion-input>
   </ion-item>
 
+  <!-- PASSWORD -->
   <ion-item>
     <ion-label>Password:</ion-label>
     <ion-input type="Password" placeholder="Password"></ion-input>
   </ion-item>
 
+  <!-- RADIO -->
   <ion-item>
     <ion-checkbox justify="start" labelPlacement="end">Remember me</ion-checkbox>
   </ion-item>
@@ -38,7 +42,9 @@
   <br>
   <br>
   <br>
+  <!-- BUTTON to go back to login -->
   <ion-button expand="block" routerLink="/tabs">Login</ion-button>
+  <!-- BUTTON to show modal -->
   <ion-button expand="block" (click)="presentModal()">Create Account</ion-button>
 
 </ion-content>

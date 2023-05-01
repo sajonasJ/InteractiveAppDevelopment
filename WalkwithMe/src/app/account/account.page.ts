@@ -7,18 +7,19 @@ import { CreatePage } from '../create/create.page';
   templateUrl: './account.page.html',
   styleUrls: ['./account.page.scss'],
 })
+
 export class AccountPage {
   contacts = [{
     fName: "Johan",
     lName: "Poopy",
     eMail: "youremail@fakemail.com",
-    birthDay:"1-Jan-2077"
+    birthDay: "1-Jan-2077"
   }];
 
   constructor(private modalController: ModalController) { }
 
-  // Method to present a modal for adding a new contact
   async presentModal(index: number) {
+    // Method to present a modal for adding a new contact
     const contact = this.contacts[index];
     const modal = await this.modalController.create({
       component: CreatePage,
@@ -26,11 +27,10 @@ export class AccountPage {
         fName: contact.fName,
         lName: contact.lName,
         eMail: contact.eMail,
-        birthDay:contact.birthDay,
+        birthDay: contact.birthDay,
       }
     });
 
-    // Event listener for when the modal is dismissed
     modal.onDidDismiss().then((retval) => {
       // Check if modal was dismissed with 'done' role and has data
       if (retval.role === 'done' && retval.data) {
@@ -41,17 +41,17 @@ export class AccountPage {
           eMail: retval.data.eMail,
           birthDay: retval.data.birthDay
         };
-
         const index = this.contacts.findIndex(c => c === contact);
+        // set index of the data as index
         this.contacts[index] = newContact;
       }
     });
-
-    return modal.present(); // Display the modal
+    return modal.present();
   }
 
-  // Method to present a modal for editing an existing contact
+
   async editModal(index: number) {
+    // Method to present a modal for editing an existing contact
     const contact = this.contacts[index];
     const modal = await this.modalController.create({
       component: CreatePage,
@@ -59,7 +59,7 @@ export class AccountPage {
         fName: contact.fName,
         lName: contact.lName,
         eMail: contact.eMail,
-        birthDay:contact.birthDay,
+        birthDay: contact.birthDay,
       }
     });
 
@@ -76,10 +76,10 @@ export class AccountPage {
         };
 
         const index = this.contacts.findIndex(c => c === contact);
+        // set index of the data as index
         this.contacts[index] = editedContact;
       }
     });
-
     return modal.present(); // Display the modal
   }
 }
