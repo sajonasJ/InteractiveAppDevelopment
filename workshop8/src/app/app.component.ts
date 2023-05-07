@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
@@ -6,18 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(
-  ) { }
+  name="john"
+  constructor(private storage: Storage
+  ) {
+    this.init();
   }
-  //   this.initializeApp();
-  // }
 
-  // async initializeApp(){
-  // }
-  // if (await this.storage.get("username") == null){
-  //   await this.storage.set("username","")
-  // }
-  // if (await this.storage.get("password")==null){
-  //   await this.storage.set("password","")
-  // }
-
+  async init() {
+    const storage = await this.storage.create();
+  }
+}

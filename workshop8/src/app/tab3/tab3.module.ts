@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab3Page } from './tab3.page';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
 
@@ -11,7 +12,8 @@ import { Tab3PageRoutingModule } from './tab3-routing.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab3PageRoutingModule
+    Tab3PageRoutingModule,
+    IonicStorageModule
   ],
   declarations: [Tab3Page]
 })

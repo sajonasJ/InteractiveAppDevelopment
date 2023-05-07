@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Storage } from '@ionic/storage-angular'
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-tab3',
@@ -8,24 +7,42 @@ import { Storage } from '@ionic/storage-angular'
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  name = "";
-  constructor(private router: Router, private storage: Storage) {
-    storage.get("name").then(val => {
-      this.name = val;
-    });
+  name: string = "";
+  notif: boolean = false;
+  reminder: string = "";
+  storedData: any;
+  
+
+  constructor(private storage: Storage) {
+    this.init();
   }
+
   async init() {
-    const storage = await this.storage.create();
-    this.name = await this.storage.get("name");
-  }
-  login() {
-    this.storage.set("name", this.name);
-  }
-  getName() {
-    this.storage.get("name").then(val => {
-      this.name = val;
+    await this.storage.create();
+    this.storedData = await this.storage.get('storedData');
 
+    if (this.storedData) {
+      this.name = this.storedData.name;
+      this.notif = this.storedData.notif;
+      this.reminder = this.storedData.reminder;
+    }
 
-    });
+    if (await this.storage.get('name') == null) {
+      await this.storage.set('name', '');
+    }
+
+    if (await this.storage.get('notif') == null) {
+      await this.storage.set('notif', false);
+    }
+
+    if (await this.storage.get('reminder') == null) {
+      await this.storage.set('reminder', '');
+    }
+  }
+
+  async saveData() {
+    await this.storage.set('storedData', { name: this.name, notif: this.notif, reminder: this.reminder });
+    this.storedData = { name: this.name, notif: this.notif, reminder: this.reminder };
+    console.log(this.storedData);
   }
 }
