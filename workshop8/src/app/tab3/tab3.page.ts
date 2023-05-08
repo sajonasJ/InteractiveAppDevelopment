@@ -11,7 +11,7 @@ export class Tab3Page {
   notif: boolean = false;
   reminder: string = "";
   storedData: any;
-  
+
 
   constructor(private storage: Storage) {
     this.init();
@@ -41,8 +41,16 @@ export class Tab3Page {
   }
 
   async saveData() {
-    await this.storage.set('storedData', { name: this.name, notif: this.notif, reminder: this.reminder });
-    this.storedData = { name: this.name, notif: this.notif, reminder: this.reminder };
+    await this.storage.set('storedData', {
+      name: this.name,
+      notif: this.notif,
+      reminder: this.reminder
+    });
+    this.storedData = {
+      name: this.name,
+      notif: this.notif,
+      reminder: this.reminder
+    };
     console.log(this.storedData);
   }
 }
