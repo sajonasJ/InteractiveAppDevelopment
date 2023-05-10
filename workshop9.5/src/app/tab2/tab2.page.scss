@@ -1,0 +1,34 @@
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid;
+}
+ion-button {
+  --color: white;
+  margin-left: 15px;
+}
+
+ion-checkbox {
+  --checkmark-color: white;
+  --background-checked: black;
+  --border-color: black;
+  --border-color-checked: black;
+  --size: 20px;
+  margin: 0px;
+}
+
+ion-list {
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+ion-label {
+  padding: 0px;
+}
+
+
+
+#ion-cb-0-lbl {
+  display: flex;
+}
+
+

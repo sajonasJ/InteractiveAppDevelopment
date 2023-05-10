@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="fName" clearInput>First Name:</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="lName" clearInput>Last Name:</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="eMail" clearInput>Email:</ion-input>
+    </ion-item>
+
+  </ion-list>
+  <ion-button *ngIf="btn == 'add'" expand="full" (click)="closemodal()">Add</ion-button>
+  <ion-button *ngIf="btn == 'edit'" expand="full" (click)="closemodal()">Edit</ion-button>
+</ion-content>
