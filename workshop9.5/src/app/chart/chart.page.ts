@@ -8,15 +8,23 @@ import Chart from 'chart.js/auto';
 })
 export class ChartPage implements OnInit {
   chart: any;
-  tel: number = 0;
+  tel?: number;
+  donuts:number[]= [];
+  telName:string="";
+  nameLabel = [ 'First',
+  'Second',
+  'Third',
+  'Fourth',
+  'Fifth']
   @ViewChild('healthChart', { static: true }) canvas: any;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
-    const donuts = [];
+
     for (let i = 0; i < 4; i++) {
-      donuts.push(donuts[i] = Math.floor(Math.random() * 100) + 1);
+      this.donuts.push(this.donuts[i] = Math.floor(Math.random() * 100) + 1);
     }
     let colorsArr = [];
     for (let i = 0; i < 5; i++) {
@@ -28,16 +36,10 @@ export class ChartPage implements OnInit {
 
     }
     const myChart = {
-      labels: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth'
-      ],
+      labels:this.nameLabel,
       datasets: [{
         label: 'My First Dataset',
-        data: donuts
+        data: this.donuts
         ,
         backgroundColor: colorsArr,
         hoverOffset: 20,
@@ -51,7 +53,8 @@ export class ChartPage implements OnInit {
   }
 
   addNum() {
-  this.tel = this.tel;
-console.log(this.tel)
-}
+    this.donuts.push(this.tel!);
+    this.nameLabel.push(this.telName);
+    this.chart.update();
+  }
 }

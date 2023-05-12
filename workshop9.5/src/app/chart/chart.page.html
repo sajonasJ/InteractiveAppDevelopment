@@ -11,8 +11,17 @@
   <canvas #healthChart height=300></canvas>
 
 
-  <ion-list>
-      <ion-item> <ion-input label="tel" id="tel" [(ngModel)]="tel" placeholder="Enter number"></ion-input>
-        <ion-button (click)="addNum()" expand="block">Add</ion-button></ion-item>
+  <ion-list class="ion-padding">
+    <ion-item>
+      <ion-label>
+        Input Number:
+      </ion-label>
+      <ion-input label="tel" id="tel" [(ngModel)]="tel" placeholder="Enter number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Enter Label:</ion-label>
+      <ion-input label="telName" id="telName" [(ngModel)]="telName" placeholder="Enter Label"></ion-input></ion-item>
+
+    <ion-button (click)="addNum()" expand="block">Add</ion-button>
   </ion-list>
 </ion-content>
