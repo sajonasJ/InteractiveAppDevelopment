@@ -53,4 +53,6 @@ export class Tab3Page {
     };
     console.log(this.storedData);
   }
+
+ 
 }

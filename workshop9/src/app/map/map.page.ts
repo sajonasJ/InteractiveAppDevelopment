@@ -28,7 +28,7 @@ export class MapPage implements OnInit {
     });
 
     let infoWindow = new google.maps.InfoWindow({
-      content: '<h4>2701ICT Headquarters</h4>'
+      content: '<h4>2701ICT Headquarters HERE</h4>'
     });
     google.maps.event.addListener(this.marker, 'click', () => {
       infoWindow.open(this.map, this.marker);

@@ -8,6 +8,7 @@ import Chart from 'chart.js/auto';
 })
 export class ChartPage implements OnInit {
   chart: any;
+  tel: number = 0;
   @ViewChild('healthChart', { static: true }) canvas: any;
 
   constructor() { }
@@ -48,4 +49,9 @@ export class ChartPage implements OnInit {
       data: myChart,
     });
   }
+
+  addNum() {
+  this.tel = this.tel;
+console.log(this.tel)
+}
 }
