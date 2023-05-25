@@ -36,4 +36,12 @@ export class ServiceService {
       await this.storage.set('reminder', '');
     }
   }
+  saveData(data: any) {
+    return this.storage.set('storedData', data);
+   
+  }
+
+  getData() {
+    return this.storage.get('storedData');
+  }
 }

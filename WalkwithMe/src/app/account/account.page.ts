@@ -1,6 +1,13 @@
+
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
-import { CreatePage } from '../create/create.page';
+import { ServiceService } from '../service.service';
+
+interface Contact {
+  fName: string;
+  lName: string;
+  eMail: string;
+  bDate: string;
+}
 
 @Component({
   selector: 'app-account',
@@ -8,78 +15,72 @@ import { CreatePage } from '../create/create.page';
   styleUrls: ['./account.page.scss'],
 })
 
-export class AccountPage {
-  contacts = [{
-    fName: "Johan",
-    lName: "Poopy",
-    eMail: "youremail@fakemail.com",
-    birthDay: "1-Jan-2077"
-  }];
+export class AccountPage implements OnInit {
+  contacts: Contact[] = [];
 
-  constructor(private modalController: ModalController) { }
+  constructor(private serviceService: ServiceService) {}
 
-  async presentModal(index: number) {
-    // Method to present a modal for adding a new contact
-    const contact = this.contacts[index];
-    const modal = await this.modalController.create({
-      component: CreatePage,
-      componentProps: {
-        fName: contact.fName,
-        lName: contact.lName,
-        eMail: contact.eMail,
-        birthDay: contact.birthDay,
-      }
-    });
-
-    modal.onDidDismiss().then((retval) => {
-      // Check if modal was dismissed with 'done' role and has data
-      if (retval.role === 'done' && retval.data) {
-        // Extract contact data from modal and add to contacts array
-        const newContact = {
-          fName: retval.data.fName,
-          lName: retval.data.lName,
-          eMail: retval.data.eMail,
-          birthDay: retval.data.birthDay
-        };
-        const index = this.contacts.findIndex(c => c === contact);
-        // set index of the data as index
-        this.contacts[index] = newContact;
-      }
-    });
-    return modal.present();
+  async ngOnInit() {
+    // Retrieve data when the component is initialized
+    await this.retrieveData();
   }
 
-
-  async editModal(index: number) {
-    // Method to present a modal for editing an existing contact
-    const contact = this.contacts[index];
-    const modal = await this.modalController.create({
-      component: CreatePage,
-      componentProps: {
-        fName: contact.fName,
-        lName: contact.lName,
-        eMail: contact.eMail,
-        birthDay: contact.birthDay,
-      }
-    });
-
-    // Event listener for when the modal is dismissed
-    modal.onDidDismiss().then((retval) => {
-      // Check if modal was dismissed with 'done' role and has data
-      if (retval.role === 'done' && retval.data) {
-        // Extract edited contact data from modal and update the contacts array
-        const editedContact = {
-          fName: retval.data.fName,
-          lName: retval.data.lName,
-          eMail: retval.data.eMail,
-          birthDay: retval.data.birthDay
-        };
-
-        const index = this.contacts.findIndex(c => c === contact);
-        // set index of the data as index
-        this.contacts[index] = editedContact;
-      }
-    });
-    return modal.present(); // Display the modal
+  async saveData() {
+    await this.serviceService.saveData(this.contacts);
+    console.log('Data saved:', this.contacts);
   }
+
+  async retrieveData() {
+    const data = await this.serviceService.getData();
+  
+    // If no data is retrieved, set a default contact
+    if (data === null || data.length === 0) {
+      this.contacts = [{
+        fName: 'Johan',
+        lName: 'Poopy',
+        eMail: 'youremail@fakemail.com',
+        bDate: '2023-06-13T00:00:00.000Z' // Replace with your desired default dat
+      
+      }];
+      console.log('No data retrieved. Set a default contact:', this.contacts);
+    } else {
+      // If data is a single object, put it into an array
+      let dataForContacts = Array.isArray(data) ? data : [data];
+      this.contacts = dataForContacts;
+      console.log('Retrieved data:', this.contacts);
+    }
+  }
+  
+
+  getFName() {
+    let fName = prompt('Enter First Name');
+    if (fName !== null) {
+      this.contacts[0].fName = fName;
+    }
+  }
+
+  getLName() {
+    let lName = prompt('Enter Last Name');
+    if (lName !== null) {
+      this.contacts[0].lName = lName;
+    }
+  }
+
+  getEmail() {
+    let email = prompt('Enter Email');
+    if (email !== null) {
+      this.contacts[0].eMail = email;
+    }
+  }
+
+  getDate(event: any) {
+    let date = event.detail.value; 
+    if (date !== null) {
+      this.contacts[0].bDate = date;
+    }
+  }
+  
+  
+
+
 }

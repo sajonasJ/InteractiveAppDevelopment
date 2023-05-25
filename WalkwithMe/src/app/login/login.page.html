@@ -43,8 +43,9 @@
   <br>
   <br>
   <!-- BUTTON to go back to login -->
-  <ion-button expand="block" routerLink="/tabs">Login</ion-button>
+  <ion-button expand="block" id="open-loading" routerLink="/tabs">Login</ion-button>
   <!-- BUTTON to show modal -->
-  <ion-button expand="block" (click)="presentModal()">Create Account</ion-button>
+  <ion-button expand="block"  (click)="presentModal(0)">Create Account</ion-button>
+  <ion-loading trigger="open-loading" spinner="bubbles" duration="1000" ></ion-loading>
 
 </ion-content>
