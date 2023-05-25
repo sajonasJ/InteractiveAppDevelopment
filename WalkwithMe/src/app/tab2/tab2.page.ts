@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,11 +6,27 @@ import { Router } from '@angular/router';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
   darkMode = false;
-  constructor(private router: Router) {}
+  
+  constructor(private router: Router) {
+    this.updateDarkMode();
+  }
 
-  getFaq() {
-    this.router.navigateByUrl("/faq/");
+  ngOnInit() {}
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    this.updateDarkMode();
+    console.log('Dark mode is: ', this.darkMode ? 'Off' : 'On');
+  }
+  
+
+  private updateDarkMode() {
+    if (this.darkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   }
 }

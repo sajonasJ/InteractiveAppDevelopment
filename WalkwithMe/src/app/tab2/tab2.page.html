@@ -15,11 +15,10 @@
 
   <!-- Dark Mode -->
   <ion-item>
-    <ion-toggle justify="space-between">
-      <h2>Dark Mode</h2>
-    </ion-toggle>
-
+      <ion-toggle   justify="space-between" [(ngModel)]="darkMode"  (ionChange)="toggleDarkMode()"> <h2>Dark Mode</h2></ion-toggle>
   </ion-item>
+
+
   <!--Step Goals -->
   <br>
   <ion-item>
