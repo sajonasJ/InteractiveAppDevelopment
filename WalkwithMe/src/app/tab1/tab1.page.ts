@@ -47,6 +47,9 @@ export class Tab1Page {
   
 
   ionViewDidEnter() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
     // const labels = this.week;
     const myBar = {
       labels: this.week,
