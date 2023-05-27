@@ -18,12 +18,12 @@
   <div #map id='map' style='height: 400px;'></div>
 
   <!-- GOAL -->
-   <br>
+  <br>
   <ion-item>
     <ion-label>
       <h1>Distance Goals</h1>
     </ion-label>
-    <ion-text>10km</ion-text>
+    <ion-text>{{ distanceGoals }} km</ion-text>
   </ion-item>
 
   <!-- Distance -->
@@ -32,7 +32,7 @@
     <ion-label>
       <h1>Distance</h1>
     </ion-label>
-    <ion-text>7km</ion-text>
+    <ion-text>{{ dailyDistance.toFixed(2) }} km</ion-text>
   </ion-item>
 
   <!-- WEEKLY DISTANCE -->
@@ -41,7 +41,7 @@
     <ion-label>
       <h1>Weekly Distance</h1>
     </ion-label>
-    <ion-text>9km</ion-text>
+    <ion-text>{{ weeklyDistance.toFixed(2) }} km</ion-text>
   </ion-item>
   <br>
 
@@ -50,6 +50,13 @@
     <ion-label>
       <h1>Average Distance</h1>
     </ion-label>
-    <ion-text>9km</ion-text>
-  </ion-item> 
+    <ion-text>{{ (weeklyDistance / 7).toFixed(2) }} km</ion-text>
+  </ion-item>
+  
+  <ion-item>
+    <ion-button [disabled]="isTracking" (click)="startTrackingLocation()">Start</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button [disabled]="!isTracking" (click)="stopTracking()">Stop</ion-button>
+  </ion-item>
 </ion-content>

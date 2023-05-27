@@ -10,6 +10,7 @@ import { Chart } from 'chart.js/auto';
 })
 
 export class Tab1Page {
+  stepGoals: number = 0;
   chart:any;
   storedData: any;
   name: string = '';
@@ -25,6 +26,7 @@ export class Tab1Page {
   }
   async onInit() {
     this.storedData = await this.storage.get('storedData');
+    this.loadStepGoals();
   }
 
 
@@ -85,5 +87,10 @@ export class Tab1Page {
       },
     });
 
+  }
+
+  async loadStepGoals() {
+    const storedData = await this.service.getData();
+    this.stepGoals = storedData?.stepGoals || 0;
   }
 }

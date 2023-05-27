@@ -9,6 +9,8 @@ export class ServiceService {
   name: string = "";
   notif: boolean = false;
   reminder: string = "";
+  stepGoals: number = 0;
+  distanceGoals: number=0;
 
   constructor(private storage: Storage) {
     this.init();
