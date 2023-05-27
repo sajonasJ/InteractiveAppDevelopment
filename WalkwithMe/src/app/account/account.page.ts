@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
-import { ImagePicker } from '@ionic-native/image-picker/ngx';
+// import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 
 interface Contact {
@@ -20,7 +20,7 @@ export class AccountPage implements OnInit {
   contacts: Contact[] = [];
   imageFile: string =" ";
   imageFiles: string[] = []; 
-  constructor(private serviceService: ServiceService, private imagePicker: ImagePicker) { }
+  constructor(private serviceService: ServiceService,/* private imagePicker: ImagePicker*/) { }
 
   async ngOnInit() {
     // Retrieve data when the component is initialized
@@ -118,13 +118,13 @@ export class AccountPage implements OnInit {
       outputType: 1
     };
   
-    this.imagePicker.getPictures(options).then((results) => {
-      for (let i = 0; i < results.length; i++) {
-        console.log('Image URI: ' + results[i]);
-      }
-    }).catch((error) => {
-      console.error('Error selecting images:', error);
-    });
+    // this.imagePicker.getPictures(options).then((results) => {
+    //   for (let i = 0; i < results.length; i++) {
+    //     console.log('Image URI: ' + results[i]);
+    //   }
+    // }).catch((error) => {
+    //   console.error('Error selecting images:', error);
+    // });
   }
   
   
