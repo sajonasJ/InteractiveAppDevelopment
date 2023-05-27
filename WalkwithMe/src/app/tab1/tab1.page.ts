@@ -31,17 +31,9 @@ export class Tab1Page {
 
 
   async saveData() {
-    await this.storage.set('storedData', {
-      name: this.name,
-      notif: this.notif,
-      reminder: this.reminder
-    });
-    this.storedData = {
-      name: this.name,
-      notif: this.notif,
-      reminder: this.reminder
-    };
-    console.log(this.storedData);
+    // await this.storage.set('storedData', {
+    // });
+    console.log('saving');
   }
 
   

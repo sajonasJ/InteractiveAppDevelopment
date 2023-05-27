@@ -16,11 +16,16 @@
   <br>
 
   <!-- PROFILE PIC -->
-  <ion-avatar class="ion-margin-start">
+  <ion-avatar class="ion-margin-start" (click)="getPictures()">
     <img alt="Silhouette of a person's head" src="https://i.imgur.com/ZamvKBP.png" />
   </ion-avatar>
+  
   <br>
+  <img src={{imageFile}}>
 
+  <div class="two-image" *ngFor="let imgs of imageFiles">
+    <img src='{{imgs}}' alt="" srcset="">
+  </div>
   <!-- FIRST NAME -->
   <ion-list *ngFor="let contact of contacts;index as i" class="ion-margin-end">
     <ion-item-sliding>
@@ -60,18 +65,18 @@
       <ion-label>Birthday:</ion-label>
       <ion-datetime-button datetime="datetime">
       </ion-datetime-button>
-    
+
       <ion-modal [keepContentsMounted]="true">
         <ng-template>
           <ion-datetime id="datetime" [showDefaultButtons]="true" presentation="date" [showDefaultTitle]="true"
-          preferWheel="true" [(ngModel)]="contacts[0].bDate" (ionDatetimeChange)="getDate($event)">
-          <span slot="title">Select your Date of Birth</span>
-        </ion-datetime>
-        
+            preferWheel="true" [(ngModel)]="contacts[0].bDate" (ionDatetimeChange)="getDate($event)">
+            <span slot="title">Select your Date of Birth</span>
+          </ion-datetime>
+
         </ng-template>
       </ion-modal>
     </ion-item>
-    
+
 
     <ion-button id="open-loading" (click)="saveData()">Save</ion-button>
     <ion-loading trigger="open-loading" spinner="bubbles" message="Saving..." duration="500"></ion-loading>

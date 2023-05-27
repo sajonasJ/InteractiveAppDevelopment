@@ -5,12 +5,17 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root'
 })
 export class ServiceService {
+  defaults: { [key: string]: string | number | boolean } = {
+    'fname': '',  // first name
+    'lname': '',  // last name
+    'email': '',  // email
+    'getDate': '',  // get date
+    'stepGoals': 0,
+    'distanceGoals': 0,
+    'darkmode':false
+  }
   storedData: any;
-  name: string = "";
-  notif: boolean = false;
-  reminder: string = "";
-  stepGoals: number = 0;
-  distanceGoals: number=0;
+
 
   constructor(private storage: Storage) {
     this.init();
@@ -19,28 +24,26 @@ export class ServiceService {
   async init() {
     await this.storage.create();
     this.storedData = await this.storage.get('storedData');
-
-    if (this.storedData) {
-      this.name = this.storedData.name;
-      this.notif = this.storedData.notif;
-      this.reminder = this.storedData.reminder;
+    console.log('service retrieved data:', this.storedData)
+    
+    for (let key in this.defaults) {
+      if (await this.storage.get(key) == null) {
+        await this.storage.set(key, this.defaults[key]);
+      } else {
+        this.defaults[key] = await this.storage.get(key);
+      }
     }
-
-    if (await this.storage.get('name') == null) {
-      await this.storage.set('name', '');
-    }
-
-    if (await this.storage.get('notif') == null) {
-      await this.storage.set('notif', false);
-    }
-
-    if (await this.storage.get('reminder') == null) {
-      await this.storage.set('reminder', '');
-    }
+    console.log('service retrieved data:', this.defaults)
   }
-  saveData(data: any) {
-    return this.storage.set('storedData', data);
-   
+
+  async saveData(data: any) {
+    console.log('service saved data:', data)
+    await this.storage.set('storedData', data);
+    // Save each key-value pair individually as well
+    for (let key in data) {
+      await this.storage.set(key, data[key]);
+      this.defaults[key] = data[key]; // updating the defaults as well
+    }
   }
 
   getData() {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { IonicModule } from '@ionic/angular';
 
 import { AccountPageRoutingModule } from './account-routing.module';
@@ -15,6 +15,7 @@ import { AccountPage } from './account.page';
     IonicModule,
     AccountPageRoutingModule
   ],
-  declarations: [AccountPage]
+  declarations: [AccountPage],
+  providers: [ImagePicker]
 })
 export class AccountPageModule {}
