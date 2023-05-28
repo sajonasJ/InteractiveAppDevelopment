@@ -1,5 +1,6 @@
 <ion-header>
-  <ion-toolbar><ion-buttons slot="start">
+  <ion-toolbar>
+    <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title mode="ios">Login</ion-title>
@@ -23,29 +24,31 @@
   </ion-text>
 
   <!-- EMAIL -->
-  <ion-item>
-    <ion-label>Email:</ion-label>
-    <ion-input type="text" name="email" placeholder="youremail@address.com"></ion-input>
-  </ion-item>
-
-  <!-- PASSWORD -->
-  <ion-item>
-    <ion-label>Password:</ion-label>
-    <ion-input type="Password" placeholder="Password"></ion-input>
-  </ion-item>
-
-  <!-- RADIO -->
-  <ion-item>
-    <ion-checkbox justify="start" labelPlacement="end">Remember me</ion-checkbox>
-  </ion-item>
-  <br>
-  <br>
-  <br>
-  <br>
-  <!-- BUTTON to go back to login -->
-  <ion-button expand="block" id="open-loading" routerLink="/tabs">Login</ion-button>
-  <!-- BUTTON to show modal -->
-  <ion-button expand="block"  (click)="presentModal(0)">Create Account</ion-button>
-  <ion-loading trigger="open-loading" spinner="bubbles" duration="1000" ></ion-loading>
-
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <!-- Form fields -->
+    <ion-item>
+      <ion-label>Email:</ion-label>
+      <ion-input type="text" [(ngModel)]="eMail" name="eMail" placeholder="youremail@address.com" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Password:</ion-label>
+      <ion-input type="password" [(ngModel)]="passWord" name="passWord" placeholder="Password" required></ion-input>
+    </ion-item>
+  
+    <!-- Error message for validation -->
+    <div *ngIf="loginForm.submitted && (loginForm.controls['eMail'].invalid || loginForm.controls['passWord'].invalid)">
+      <p>Please provide both email and password.</p>
+    </div>
+    
+    
+  
+    <!-- Buttons -->
+    <ion-button expand="block" id="open-loading" type="submit" [disabled]="loginForm.invalid">
+      Login
+    </ion-button>
+    <ion-button expand="block" (click)="presentModal()">Create Account</ion-button>
+    <ion-loading trigger="open-loading" spinner="bubbles" duration="1000"></ion-loading>
+  </form>
+  
 </ion-content>

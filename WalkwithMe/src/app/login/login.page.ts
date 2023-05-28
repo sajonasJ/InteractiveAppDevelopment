@@ -1,83 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CreatePage } from '../create/create.page';
+import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
-  contacts = [{
-    fName: "Johan",
-    lName: "Poopy",
-    eMail: "youremail@fakemail.com",
-    birthDay: "1-Jan-2077"
-  }];
+export class LoginPage implements OnInit {
+  eMail: string = '';
+  passWord: string = '';
+  rememberMe: boolean = false;
+  storedData: any;
 
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private storageService: ServiceService,
+    private router: Router
+  ) { }
 
-  async presentModal(index: number) {
-    // Method to present a modal for adding a new contact
-    const contact = this.contacts[index];
+  async ngOnInit() {
+    this.storedData = await this.storageService.getData();
+    console.log('this is the data:',this.storedData)
+  }
+
+  async presentModal() {
     const modal = await this.modalController.create({
       component: CreatePage,
-      componentProps: {
-        fName: contact.fName,
-        lName: contact.lName,
-        eMail: contact.eMail,
-        birthDay: contact.birthDay,
-      }
-    });
-
-    modal.onDidDismiss().then((retval) => {
-      // Check if modal was dismissed with 'done' role and has data
-      if (retval.role === 'done' && retval.data) {
-        // Extract contact data from modal and add to contacts array
-        const newContact = {
-          fName: retval.data.fName,
-          lName: retval.data.lName,
-          eMail: retval.data.eMail,
-          birthDay: retval.data.birthDay
-        };
-        const index = this.contacts.findIndex(c => c === contact);
-        // set index of the data as index
-        this.contacts[index] = newContact;
-      }
     });
     return modal.present();
   }
 
+  async login() {
+    console.log('Entered Email:', this.eMail);
+    console.log('Entered Password:', this.passWord);
 
-  async editModal(index: number) {
-    // Method to present a modal for editing an existing contact
-    const contact = this.contacts[index];
-    const modal = await this.modalController.create({
-      component: CreatePage,
-      componentProps: {
-        fName: contact.fName,
-        lName: contact.lName,
-        eMail: contact.eMail,
-        birthDay: contact.birthDay,
-      }
-    });
-
-    // Event listener for when the modal is dismissed
-    modal.onDidDismiss().then((retval) => {
-      // Check if modal was dismissed with 'done' role and has data
-      if (retval.role === 'done' && retval.data) {
-        // Extract edited contact data from modal and update the contacts array
-        const editedContact = {
-          fName: retval.data.fName,
-          lName: retval.data.lName,
-          eMail: retval.data.eMail,
-          birthDay: retval.data.birthDay
-        };
-
-        const index = this.contacts.findIndex(c => c === contact);
-        // set index of the data as index
-        this.contacts[index] = editedContact;
-      }
-    });
-    return modal.present(); // Display the modal
+    // Check if the entered email and password match the stored data
+    if (
+      this.storedData &&
+      this.storedData.eMail === this.eMail &&
+      this.storedData.passWord === this.passWord
+    ) {
+      // Login successful
+      this.router.navigate(['/tabs']);
+      console.log('Login successful');
+    } else {
+      // Login failed
+      console.log('Login failed');
+      // Handle the failed login case, such as displaying an error message
+    }
   }
 }

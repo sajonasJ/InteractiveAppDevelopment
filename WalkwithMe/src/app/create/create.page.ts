@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';
 import { ServiceService } from '../service.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -9,56 +9,52 @@ import { ServiceService } from '../service.service';
   styleUrls: ['./create.page.scss'],
 })
 export class CreatePage implements OnInit {
-  fName: string;
-  lName: string;
-  eMail: string;
-  birthDay: string;
-  contacts: any[] = []; 
-  storedData: any;
-  name: string = "";
-  notif: boolean = false;
-  reminder: string = "";
+  fName: string = '';
+  lName: string = '';
+  eMail: string = '';
+  bDate: string = '';
+  contacts: any[] = [];
+  passWord: string = '';
+  passWord2: string = '';
 
   constructor(
     private modalController: ModalController,
-    private service: ServiceService,
-    private storage: Storage
-    ){
-    this.fName = '';
-    this.lName = '';
-    this.eMail = '';
-    this.birthDay = '';
+    private storageService: ServiceService
+  ) {// Initialize storage
+    this.contacts = []; // Initialize contacts as an empty array
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  closemodal() {
+  clickClose() {
+    this.modalController.dismiss();
+  }
+
+  async saveData() {
     const newContact = {
       fName: this.fName,
       lName: this.lName,
       eMail: this.eMail,
-      birthDay: this.birthDay,
+      bDate: this.bDate,
+      passWord: this.passWord,
+      passWord2: this.passWord2
     };
-
+  
     this.contacts.push(newContact);
+    console.log('Data saved:', newContact);
+  
+    await this.storageService.saveData(newContact); // Save new contact to the storage
+  
     this.modalController.dismiss(newContact, 'done');
   }
-  click(){
-    this.modalController.dismiss(console.log('here'), 'done');
+  
 
+  getDate(event: any) {
+    let date = event.detail.value;
+    if (date !== null) {
+      this.bDate = date; 
+    }
+    console.log(date)
   }
 
-  async saveData() {
-    await this.storage.set('storedData', {
-      name: this.name,
-      notif: this.notif,
-      reminder: this.reminder
-    });
-    this.storedData = {
-      name: this.name,
-      notif: this.notif,
-      reminder: this.reminder
-    };
-    console.log(this.storedData);
-  }
 }

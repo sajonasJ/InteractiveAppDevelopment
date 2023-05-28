@@ -8,6 +8,7 @@ interface Contact {
   lName: string;
   eMail: string;
   bDate: string;
+  passWord:string;
 }
 
 @Component({
@@ -34,15 +35,16 @@ export class AccountPage implements OnInit {
 
   async retrieveData() {
     const data = await this.serviceService.getData();
-
+  
     // If no data is retrieved, set a default contact
     if (data === null || data.length === 0) {
       this.contacts = [{
-        fName: 'Johan',
-        lName: 'Poopy',
-        eMail: 'youremail@fakemail.com',
-        bDate: '2023-06-13T00:00:00.000Z' // Replace with your desired default dat
-
+        fName: '',
+        lName: '',
+        eMail: '',
+        bDate: '', 
+        passWord:''
+  
       }];
       console.log('No data retrieved. Set a default contact:', this.contacts);
     } else {
@@ -50,8 +52,15 @@ export class AccountPage implements OnInit {
       let dataForContacts = Array.isArray(data) ? data : [data];
       this.contacts = dataForContacts;
       console.log('Retrieved data:', this.contacts);
+  
+      // Retrieve the bDate property from the retrieved data
+      const bDate = this.contacts[0].bDate;
+      if (bDate) {
+        this.contacts[0].bDate = new Date(bDate).toISOString(); // Convert to ISO string format
+      }
     }
   }
+  
 
 
   getFName() {
@@ -79,6 +88,13 @@ export class AccountPage implements OnInit {
     let date = event.detail.value;
     if (date !== null) {
       this.contacts[0].bDate = date;
+    }
+  }
+
+  getPassword() {
+    let passWord = prompt('Enter Last Name');
+    if (passWord !== null) {
+      this.contacts[0].passWord = passWord;
     }
   }
 

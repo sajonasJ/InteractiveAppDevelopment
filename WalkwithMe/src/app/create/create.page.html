@@ -11,68 +11,76 @@
     </ion-toolbar>
   </ion-header>
 
+  <form #accountForm="ngForm">
+    <ion-list>
+      <!-- FIRST NAME -->
+      <ion-item>
+        <ion-input label="First Name:" labelPlacement="stacked" placeholder="John / Jane" type="text" [(ngModel)]="fName"
+          name="fName" required clearInput></ion-input>
+      </ion-item>
 
-  <ion-list>
-    <!-- FIRST NAME -->
-    <ion-item>
-      <ion-input label="First Name:" labelPlacement="stacked" placeholder="John / Jane" type="text" [(ngModel)]="fName"
-        clearInput></ion-input>
-    </ion-item>
+      <!-- LAST NAME -->
+      <ion-item>
+        <ion-input label="Last Name:" labelPlacement="stacked" placeholder="Doe" type="text" [(ngModel)]="lName"
+          name="lName" required clearInput></ion-input>
+      </ion-item>
 
-    <!-- LAST NAME -->
-    <ion-item>
-      <ion-input label="Last Name:" labelPlacement="stacked" placeholder="Doe" type="text" [(ngModel)]="lName"
-        clearInput></ion-input>
-    </ion-item>
+      <!-- DATE -->
+      <ion-item>
+        <ion-label>Date of Birth</ion-label>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime (ionChange)="getDate($event)" [showDefaultTitle]="true" id="datetime"
+              presentation="date" preferWheel="true" [showDefaultButtons]="true">
+              <span slot="title">Select your Date of Birth</span>
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
 
-    <!-- DATE -->
-    <ion-item>
-      <ion-label>Date of Birth</ion-label>
-      <ion-datetime-button datetime="datetime"></ion-datetime-button>
-      <ion-modal [keepContentsMounted]="true">
-        <ng-template>
-          <ion-datetime id="datetime" presentation="date" preferWheel="true"></ion-datetime>
-        </ng-template>
-      </ion-modal>
-    </ion-item>
+      <!-- Email -->
+      <ion-item>
+        <ion-input label="Email:" labelPlacement="stacked" placeholder="youremail@address.com" type="text"
+          [(ngModel)]="eMail" name="eMail" required clearInput></ion-input>
+      </ion-item>
 
-    <!-- Email -->
-    <ion-item>
-      <ion-input label="Email:" labelPlacement="stacked" placeholder="youremail@address.com" type="text"
-        [(ngModel)]="eMail" clearInput></ion-input>
-    </ion-item>
+      <!-- PASSWORD -->
+      <ion-item>
+        <ion-input type="Password" label="Password:" labelPlacement="stacked" [(ngModel)]="passWord" name="passWord"
+          placeholder="Password" required clearInput></ion-input>
+      </ion-item>
 
-    <!-- PASSWORD -->
-    <ion-item>
-      <ion-input type="Password" label="Password:" labelPlacement="stacked" placeholder="Password"
-        clearInput></ion-input>
-    </ion-item>
+      <!-- RETYPE PASSWORD -->
+      <ion-item>
+        <ion-input type="Password" label="Re-type Password:" [(ngModel)]="passWord2" name="passWord2"
+          labelPlacement="stacked" placeholder="Re-type Password" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <div *ngIf="accountForm.form.valid && passWord !== passWord2">
+      <p>Passwords must match.</p>
+    </div>
+    <br>
+    <br>
+    <br>
 
-    <!-- RETYPE PASSWORD -->
-    <ion-item>
-      <ion-input type="Password" label="Re-type Password:" labelPlacement="stacked"
-        placeholder="Re-type Password"></ion-input>
-    </ion-item>
-  </ion-list>
-  <br>
-  <br>
-  <br>
+    <!-- CREATE ACCOUNT -->
+    <ion-button expand="block" (click)="saveData()" [disabled]="!accountForm.form.valid || passWord !== passWord2"
+      id="open-loading">Create Account</ion-button>
+    <ion-loading trigger="open-loading" spinner="bubbles" duration="1000"></ion-loading>
+    <ion-text>
+      <p>Already have an Account?</p>
+    </ion-text>
+    <ion-button expand="block" (click)="clickClose()" routerLink="./login">Login</ion-button>
+    <br>
 
-  <!-- CREATE ACCOUNT -->
-  <ion-button expand="block"(click)="saveData()" id="open-loading" (click)="closemodal()">Create Account</ion-button>
-  <ion-loading trigger="open-loading" spinner="bubbles" duration="1000" ></ion-loading>
-  <ion-text>
-    <p>Already have an Account?</p>
-  </ion-text>
-  <ion-button expand="block" (click)="click()" routerLink="./login">Login</ion-button>
-  <br>
+    <!-- TERMS AND CONDITIONS -->
 
-  <!-- TERMS AND CONDITIONS -->
-  
     <ion-buttons>
       <ion-button routerLink="/terms-conditions">
         <h6>Terms and Conditions</h6>
       </ion-button>
     </ion-buttons>
- 
+  </form>
+
 </ion-content>
