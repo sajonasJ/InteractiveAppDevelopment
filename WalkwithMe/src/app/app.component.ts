@@ -18,8 +18,12 @@ export class AppComponent {
     await this.storage.create();
     console.log('Storage initialized');
 
-    if (SplashScreen) {
-      await SplashScreen['hide']();
-    }
+    await SplashScreen['hide']();
+
+
+    await SplashScreen['show']({
+      showDuration: 2000,
+      autohide: true,
+    })
   }
 }

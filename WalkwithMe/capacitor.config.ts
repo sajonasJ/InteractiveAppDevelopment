@@ -8,7 +8,13 @@ const config: CapacitorConfig = {
 
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchShowDuration": 2000,
+      "splashFullScreen":true,
+      "splashImmersive":false,
+      "splash":{
+        iosAssetsFolder: "App/Assets.xcassets/splash_screens/SplashScreen.imageset"
+      }
+
     }
   }
   
