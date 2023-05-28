@@ -6,18 +6,26 @@ const config: CapacitorConfig = {
   webDir: 'www',
   bundledWebRuntime: false,
 
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 2000,
-      "splashFullScreen":true,
-      "splashImmersive":false,
-      "splash":{
-        iosAssetsFolder: "App/Assets.xcassets/splash_screens/SplashScreen.imageset"
-      }
 
-    }
-  }
-  
+
+  plugins: {
+    SplashScreen: {
+      launchShowDuration: 3000,
+      launchAutoHide: true,
+      launchFadeOutDuration: 3000,
+      // backgroundColor: "#ffffffff",
+      androidSplashResourceName: "splash",
+      // androidScaleType: "CENTER_CROP",
+      showSpinner: false,
+      // androidSpinnerStyle: "large",
+      // iosSpinnerStyle: "small",
+      // spinnerColor: "#999999",
+      splashFullScreen: true,
+      splashImmersive: true,
+      // layoutName: "launch_screen",
+      // useDialog: true,
+    },
+  },
 };
 
 export default config;
