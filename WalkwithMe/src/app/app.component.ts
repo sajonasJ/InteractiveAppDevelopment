@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { Plugins } from '@capacitor/core';
+const { SplashScreen } = Plugins;
+
 
 @Component({
   selector: 'app-root',
@@ -14,5 +17,9 @@ export class AppComponent {
   async initializeApp() {
     await this.storage.create();
     console.log('Storage initialized');
+
+    if (SplashScreen) {
+      await SplashScreen['hide']();
+    }
   }
 }
