@@ -2,7 +2,7 @@ import UIKit
 import Capacitor
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+spalshclass AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
