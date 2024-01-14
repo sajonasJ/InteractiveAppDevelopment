@@ -1,7 +1,0 @@
-{
-  "name": "contacts",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
